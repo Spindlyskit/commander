@@ -8,8 +8,15 @@ const TestCommand = require('./commands/test');
 
 const client = new commander.Client({ mentionable: true });
 
-client.on('messageMatched', (msg, prefix) => {
-	console.log(`Message "${msg.content}" (${msg.id}) matched with prefix "${prefix}"`);
+// In a real bot, this feature would be incredibly annoying but it's a useful test here
+client.on('commandInvalid', (msg, cmd) => {
+	console.log(`invalid command "${cmd}" in message "${msg.content}" (${msg.id})`);
+	msg.channel.send('Failed to find a command with that name');
+});
+
+client.on('commandDisallowed', (msg, cmd) => {
+	console.log(`disallowed command "${cmd.name}" in channel "${msg.channel.id}"`);
+	msg.channel.send(`You cannot run that here`);
 });
 
 client.addCommand(TestCommand);
