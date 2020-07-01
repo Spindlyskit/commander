@@ -1,12 +1,14 @@
 /* eslint-disable no-console */
 'use strict';
 
-const config = require('./config.json');
+const path = require('path');
 const commander = require('..');
-
-const TestCommand = require('./commands/test');
+const { requireDirectory } = commander;
+const config = require('./config.json');
 
 const client = new commander.Client({ mentionable: true });
+
+client.on('commanderDebug', s => console.log('Debug:', s));
 
 // In a real bot, this feature would be incredibly annoying but it's a useful test here
 client.on('commandInvalid', (msg, cmd) => {
@@ -19,6 +21,6 @@ client.on('commandDisallowed', (msg, cmd) => {
 	msg.channel.send(`You cannot run that here`);
 });
 
-client.addCommand(TestCommand);
+requireDirectory(path.join(__dirname, './commands'), c => client.addCommand(c));
 
 client.login(config.token);
