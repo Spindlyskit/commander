@@ -7,6 +7,9 @@
   "author": "Spindlyskit",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "node examples/example.js"
+  },
   "dependencies": {
     "common-tags": "^1.8.0",
     "discord.js": "^12.2.0"
