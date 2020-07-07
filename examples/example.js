@@ -21,6 +21,7 @@ client.on('commandDisallowed', (msg, cmd) => {
 	msg.channel.send(`You cannot run that here`);
 });
 
+client.registerDefaults();
 requireDirectory(path.join(__dirname, './commands'), c => client.addCommand(c));
 
 client.login(config.token);
