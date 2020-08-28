@@ -13,12 +13,12 @@ client.on('commanderDebug', s => console.log('Debug:', s));
 // In a real bot, this feature would be incredibly annoying but it's a useful test here
 client.on('commandInvalid', (msg, cmd) => {
 	console.log(`invalid command "${cmd}" in message "${msg.content}" (${msg.id})`);
-	msg.channel.send('Failed to find a command with that name');
+	msg.respond('Failed to find a command with that name');
 });
 
 client.on('commandDisallowed', (msg, cmd) => {
 	console.log(`disallowed command "${cmd.name}" in channel "${msg.channel.id}"`);
-	msg.channel.send(`You cannot run that here`);
+	msg.respond(`You cannot run that here`);
 });
 
 client.registerDefaults();

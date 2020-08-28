@@ -15,7 +15,7 @@ class TestCommand extends Command {
 	}
 
 	run(msg) {
-		msg.channel.send(`Hello, ${msg.author}`);
+		msg.respond(`Hello, ${msg.author}`);
 	}
 }
 
