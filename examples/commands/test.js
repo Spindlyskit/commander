@@ -15,7 +15,7 @@ class TestCommand extends Command {
 	}
 
 	run(msg) {
-		msg.respond(`Hello, ${msg.author}`);
+		msg.resolve(`Hello, ${msg.author}`);
 	}
 }
 

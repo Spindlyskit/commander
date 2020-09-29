@@ -16,6 +16,10 @@ client.on('commandInvalid', (msg, cmd) => {
 	msg.respond('Failed to find a command with that name');
 });
 
+client.on('commandMessageFinsihed', (msg) => {
+	console.log(`Message ${msg.id} finished with status ${msg.status.description}`);
+});
+
 client.on('commandDisallowed', (msg, cmd) => {
 	console.log(`disallowed command "${cmd.name}" in channel "${msg.channel.id}"`);
 	msg.respond(`You cannot run that here`);
